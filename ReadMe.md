@@ -1,4 +1,4 @@
-# ReadOnly
+# ReadOnly Attribute
 
 Unity package that adds a `[ReadOnly]` attribute. Fields marked with it stay visible in the Inspector but cannot be edited. Useful for debug values, runtime state, and references that should not be changed by hand.
 
@@ -23,17 +23,6 @@ Unity package that adds a `[ReadOnly]` attribute. Fields marked with it stay vis
 3. Paste the repository URL and click `Add`:
 ```
 https://github.com/Tabbebro/Unity-ReadOnly-Attribute.git
-```
-### manifest.json
-
-Add the dependency to `Packages/manifest.json`:
-
-```diff
-  {
-    "dependencies": {
-      "com.tabbebro.readonly": "https://github.com/Tabbebro/Unity-ReadOnly-Attribute.git#1.0.0"
-    }
-  }
 ```
 
 ## Usage
