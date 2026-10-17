@@ -1,36 +1,55 @@
 # ReadOnly
 
-A small Unity package that adds a [ReadOnly] attribute. Fields marked with it
-stay visible in the Inspector but cannot be edited, which is useful for
-debug values, runtime state, and references that should not be changed by hand.
+Unity package that adds a `[ReadOnly]` attribute. Fields marked with it stay visible in the Inspector but cannot be edited. Useful for debug values, runtime state, and references that should not be changed by hand.
+
+## Features
+
+- Shows any serialized field as non-editable in the Inspector
+- Works with arrays, lists, and structs
+- Combines with `[SerializeField]` for private fields
+- Editor drawer is isolated in an Editor-only assembly, so builds are unaffected
+
+## Requirements
+
+- Unity 2022.1 or newer
+- Git installed and available on your PATH (required by the Package Manager for git URLs)
 
 ## Installation
 
-### Git URL
+### Package Manager (recommended)
 
-1. Open Window > Package Manager.
-2. Click the + button and choose "Add package from git URL".
-3. Paste the URL and click Add:
-
-   https://github.com/yourname/com.yourname.readonly.git
-
-To install a specific version, append a tag:
-
-   https://github.com/yourname/com.yourname.readonly.git#1.0.0
-
+1. Open `Window > Package Manager`.
+2. Click `+` > `Add package from git URL...`.
+3. Paste the repository URL and click `Add`:
+```
+https://github.com/Tabbebro/Unity-ReadOnly-Attribute.git
+```
 ### manifest.json
 
-Add this line to the dependencies in Packages/manifest.json:
+Add the dependency to `Packages/manifest.json`:
 
-   "com.yourname.readonly": "https://github.com/yourname/com.yourname.readonly.git"
+```diff
+  {
+    "dependencies": {
+      "com.tabbebro.readonly": "https://github.com/Tabbebro/Unity-ReadOnly-Attribute.git#1.0.0"
+    }
+  }
+```
 
 ## Usage
 
-[SerializeField, ReadOnly] int _health = 10;
-[ReadOnly] public float Speed = 
+Add `[ReadOnly]` to a field. The attribute does not serialize the field, so combine it with `[SerializeField]` for private fields:
 
-## Notes
+```csharp
+using UnityEngine;
 
-- Works with any serializable field, including arrays, Lists, structs & Classes.
-- The attribute is in a Runtime assembly, the drawer is in an Editor-only assembly.
-- It does not serialize the field. Combine it with [SerializeField] or use a public field.
+public class Player : MonoBehaviour
+{
+    // Serialized and shown greyed out in the Inspector
+    [SerializeField, ReadOnly] int _health = 10;
+}
+```
+
+## Uninstalling
+
+Open `Window > Package Manager`, select ReadOnly, and click `Remove`. Remove any `[ReadOnly]` usages from your scripts first, or they will fail to compile.
