@@ -1,0 +1,12 @@
+{
+  "name": "com.tabbebro.readonlyattribute",
+  "version": "1.0.0",
+  "displayName": "ReadOnlyAttribute",
+  "unity": "2021.3",
+  "description": "Adds a [ReadOnly] attribute that displays serialized fields in the Inspector as non-editable.",
+  "license": "MIT",
+  "author": {
+    "name": "TabbeBro",
+    "url": "https://github.com/Tabbebro"
+  }
+}
